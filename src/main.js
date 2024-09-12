@@ -23,13 +23,13 @@ newGameButtonElem.addEventListener('click', function () {
 
 })
 
-document.getElementById('form').addEventListener('submit', function(event){
+document.getElementById('form').addEventListener('submit', async function(event){
     event.preventDefault();
 
     const formData = new FormData(event.target);
     const word = formData.get('word');
 
-    const isWordValid = game.validateWord(word);
+    const isWordValid = await game.validateWord(word);
     if(isWordValid){
         streakElem.innerHTML = game.streak;
     }else{
